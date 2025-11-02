@@ -1,20 +1,24 @@
-import React from "react";
+// components/common/Card.tsx
+import React, { ReactNode } from "react";
 
-export interface CardProps {
+interface CardProps {
   title: string;
   description: string;
-  imageUrl: string;
+  image: string;
+  children?: ReactNode;
 }
 
-const Card: React.FC<CardProps> = ({ title, description, imageUrl }) => {
+const Card: React.FC<CardProps> = ({ title, description, image, children }) => {
   return (
-    <div className="border rounded-lg overflow-hidden shadow-lg p-4">
-      <img src={imageUrl} alt={title} className="w-full h-48 object-cover mb-4" />
-      <h2 className="text-xl font-bold mb-2">{title}</h2>
-      <p className="text-gray-700">{description}</p>
+    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+      <img src={image} alt={title} className="w-full h-48 object-cover" />
+      <div className="p-4">
+        <h2 className="text-2xl font-semibold mb-2">{title}</h2>
+        <p className="text-gray-700 mb-4">{description}</p>
+        {children}
+      </div>
     </div>
   );
 };
 
 export default Card;
-
